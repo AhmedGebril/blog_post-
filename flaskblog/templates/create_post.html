@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{%block title%}<title>Create Post</title>{% endblock title%}
+{% block content %}
+
+<div class="content-section">
+          <form  action="" method="post" enctype="multipart/form-data" >
+            {{ form.csrf_token }}
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Just Write What You Think!</legend>
+              <div class="form-group">
+                {{ form.title.label(class="form-control-label") }}
+                {% if form.title.errors %}
+                {{ form.title(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for errors in form.title.errors %}
+                  <span>{{errors}}</span>
+                  {%endfor%}
+                </div>
+                {% else %}
+                {{ form.title(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+              <div class="form-group">
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
+                {{ form.content(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for errors in form.email.errors %}
+                  <span>{{errors}}</span>
+                  {%endfor%}
+                </div>
+                {% else %}
+                {{ form.content(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+            </fieldset>
+            <div class="form-group">
+              {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+          </form>
+      </div>
+
+{% endblock %}
